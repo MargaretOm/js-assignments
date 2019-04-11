@@ -22,7 +22,8 @@
  *   5, 5  => 25
  */
 function getRectangleArea(width, height) {
-    throw new Error('Not implemented');
+    return (width * height);
+    //throw new Error('Not implemented');
 }
 
 
@@ -38,7 +39,8 @@ function getRectangleArea(width, height) {
  *   0    => 0
  */
 function getCicleCircumference(radius) {
-    throw new Error('Not implemented');
+    return(2 * Math.PI * radius);
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -54,6 +56,7 @@ function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
+    //return((value1 + value2) / 2.0);
     throw new Error('Not implemented');
 }
 
@@ -73,7 +76,8 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-    throw new Error('Not implemented');
+    return(Math.sqrt (Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2)));
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -143,7 +147,8 @@ function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-    throw new Error('Not implemented');
+    return(parseFloat(value));
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -181,7 +186,19 @@ function getParallelipidedDiagonal(a,b,c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-    throw new Error('Not implemented');
+    pow = Math.pow(10, pow);
+    var temp = num % pow;
+    var temp1 = temp;
+    while (temp1 >= 10){
+        var temp2 = (temp1 % 10);
+        temp1 = (temp1 - temp2) / 10;
+    }
+    if (temp1 < 5){
+        return (num - temp);
+    } else {
+        return ((num - temp) + pow);
+    }
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -202,7 +219,15 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-    throw new Error('Not implemented');
+    if (n <= 3 || n == 5 || n == 7){
+        return true;
+    }else if (n % 2 == 0 || n % 3 == 0 || n % 5 == 0 || n % 7 == 0){
+        return false;
+    }else{
+        return true;
+    }
+    
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -221,7 +246,13 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-    throw new Error('Not implemented');
+    if (Number(value) == true){
+        return value;
+
+    } else {
+        return def;
+    }
+    //throw new Error('Not implemented');
 }
 
 module.exports = {
