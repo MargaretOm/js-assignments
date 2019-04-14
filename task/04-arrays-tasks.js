@@ -211,7 +211,8 @@ function getTail(arr, n) {
  *    +'30,31,32,33,34'
  */
 function toCsvText(arr) {
-   throw new Error('Not implemented');
+   return arr.reduce((previousValue, currentValue) => previousValue + '\n' + currentValue);
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -399,7 +400,7 @@ function getItemsSum(arr) {
    } else {
       return arr.reduce((accumulator, currentValue) => accumulator + currentValue);
    }
-   throw new Error('Not implemented');
+   //throw new Error('Not implemented');
 }
  
 /** 
@@ -415,7 +416,14 @@ function getItemsSum(arr) {
  *  [ null, undefined, NaN, false, 0, '' ]  => 6
  */
 function getFalsyValuesCount(arr) {
-   throw new Error('Not implemented');
+   let temp = 0;
+   arr.map((value) =>{
+      if (!value){
+         temp++;
+      }
+   })
+   return temp;
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -433,7 +441,14 @@ function getFalsyValuesCount(arr) {
  *    [ true, 0, 1, 'true' ], true => 1
  */
 function findAllOccurences(arr, item) {
-   throw new Error('Not implemented');
+   let temp = 0;
+   arr.map((value) => {
+      if (value === item){
+         temp++;
+      }
+   })
+   return temp;
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -448,7 +463,8 @@ function findAllOccurences(arr, item) {
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
 function toStringList(arr) {
-   throw new Error('Not implemented');
+   return arr.toString();
+   //throw new Error('Not implemented');
 }
 
 
@@ -477,7 +493,17 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   throw new Error('Not implemented');
+   arr.sort((a,b) => {
+      if(a.country < b.country){return -1}
+      if(a.country > b.country){return 1}
+
+      if(a.country = b.country){
+      if(a.city < b.city){return -1}
+      if(a.city > b.city){return 1}
+      }
+   })
+   return arr;
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -499,7 +525,13 @@ function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]   
  */
 function getIdentityMatrix(n) {
-   throw new Error('Not implemented');
+   let new_arr = new Array(n).fill(null);
+   return new_arr.map(function(value,i) { 
+     value = new Array(n).fill(0);
+     value[i] = 1;
+     return value;
+   });
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -516,7 +548,8 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-   throw new Error('Not implemented');
+   return new Array(end - start + 1).fill(0).map((value) => start++);
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -531,7 +564,14 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   throw new Error('Not implemented');
+   let new_arr = [];
+   arr.map((value) => {
+      if(!new_arr.includes(value)){
+         new_arr.push(value);
+      }
+   })
+   return new_arr;
+   //throw new Error('Not implemented');
 }
 
 /**
@@ -581,7 +621,8 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+   
+   throw new Error('Not implemented');
 }
 
 
@@ -621,7 +662,29 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+   if (arr.length <= 1){
+      return arr;
+   }
+   let temp = (arr.length - (arr.length % 2)) / 2;
+   let new_arr = [];
+   arr.map((value,index) => {
+      if (index < temp){
+         new_arr.push(arr[arr.length - temp + index]);
+      }
+
+      if (index == temp && arr.length % 2 != 0){
+         new_arr.push(value);
+      }
+      
+      if (index >= arr.length - temp && arr.length % 2 != 0){
+         new_arr.push(arr[index-temp-1]);
+      }
+      if (index >= arr.length - temp && arr.length % 2 == 0){
+         new_arr.push(arr[index-temp]);
+      }
+   })
+   return new_arr;
+   //throw new Error('Not implemented');
 }
 
 

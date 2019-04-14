@@ -220,7 +220,8 @@ function convertToUpperCase(str) {
  *   'info@gmail.com' => ['info@gmail.com']
  */
 function extractEmails(str) {
-    throw new Error('Not implemented');
+    return str.split(';');
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -285,7 +286,22 @@ function getRectangleString(width, height) {
  *
  */
 function encodeToRot13(str) {
-    throw new Error('Not implemented');
+    let str_ = "";
+    const abc = 26;
+    for (let i = 0; i < str.length; i++) {
+        if ((str.charAt(i).charCodeAt()) > 109) {
+            str_ += String.fromCharCode(str.charAt(i).charCodeAt() + 13 - abc);
+        } else if (77 < (str.charAt(i).charCodeAt()) && (str.charAt(i).charCodeAt()) <= 90) {
+            str_ += String.fromCharCode(str.charAt(i).charCodeAt() + 13 - abc);
+        } else if ((str.charAt(i).charCodeAt()) < 64) {
+            str_ += String.fromCharCode(str.charAt(i).charCodeAt());
+        } else {
+            str_ += String.fromCharCode(str.charAt(i).charCodeAt() + 13);
+        }
+    }
+
+    return str_;
+    //throw new Error('Not implemented');
 }
 
 /**
