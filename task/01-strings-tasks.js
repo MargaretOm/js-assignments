@@ -106,8 +106,11 @@ function getFirstChar(value) {
  *   '\tHello, World! ' => 'Hello, World!'
  */
 function removeLeadingAndTrailingWhitespaces(value) {
-    /*var new_str = '';
+    var new_str = '';
     var j = 0;
+    if (value[j] == '\t'){
+        j++;
+    }
     while (value[j] == ' ' && j < value.length){
 
         j++;
@@ -117,15 +120,16 @@ function removeLeadingAndTrailingWhitespaces(value) {
 
         k--;
     }
-    j--;
-    while (j <=k){
+    
+    while (j <= k){
         new_str = new_str + value[j];
+        j++;
     }
     
     
     
-    return value;*/
-    throw new Error('Not implemented');
+    return new_str;
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -161,7 +165,16 @@ function repeatString(value, count) {
  *   'ABABAB','BA' => 'ABAB'
  */
 function removeFirstOccurrences(str, value) {
-    throw new Error('Not implemented');
+    var temp_index = str.indexOf(value);
+    var new_str = '';
+    for (var i = 0; i < str.length; i++){
+        if (i == temp_index){
+            i = i + value.length;
+        }
+        new_str = new_str + str[i];
+    }
+    return new_str;
+    //throw new Error('Not implemented');
 }
 
 /**
@@ -234,10 +247,10 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-    /*var str = '';
+    var str = '';
     var temp_str1 = '';
     var temp_str2 = '';
-    for(var i = 0; i < height-2; i++){
+    for(var i = 0; i < width-2; i++){
         temp_str1 = temp_str1 + '─';
         temp_str2 = temp_str2 + ' ';
     }
@@ -250,8 +263,9 @@ function getRectangleString(width, height) {
             str = str + '│' + temp_str2 + '│\n'
         }
 
-    }*/
-    throw new Error('Not implemented');
+    }
+    return str;
+    //throw new Error('Not implemented');
 }
 
 
@@ -288,7 +302,14 @@ function encodeToRot13(str) {
  *   isString(new String('test')) => true
  */
 function isString(value) {
-    throw new Error('Not implemented');
+    if (value > ''){
+        return true;
+    } else if (toString(value) == true){
+        return true;
+    } else {
+        return false;
+    }
+    //throw new Error('Not implemented');
 }
 
 

@@ -131,7 +131,12 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-    throw new Error('Not implemented');
+    if (value >= 10){
+        return(value % 10);
+    } else{
+        return value;
+    }
+    //throw new Error('Not implemented');
 }
 
 
@@ -247,7 +252,14 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-    throw new Error('Not implemented');
+    if (value > 0){
+        return(value);
+    } else if (parseInt(value) == true){
+        return parseInt(value);
+    } else {
+        return(def);
+    }
+    //throw new Error('Not implemented');
 }
 
 module.exports = {
