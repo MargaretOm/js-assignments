@@ -388,8 +388,21 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    
-    throw new Error('Not implemented');
+    let brackets = new Map([  [']', '['], [')', '('],  ['}', '{'],  ['>', '<'] ]);
+    let stack = new Array();
+    let i;
+    for ( i = 0 ; i < str.length; i++ ){
+        if ( brackets.has(str[i]) ){
+            if (stack[ stack.length - 1 ] != brackets.get(str[i]))
+                return false;
+            stack.pop();
+        } 
+        else {
+            stack.push(str[i]);
+        }
+    }
+    return stack.length == 0;
+    //throw new Error('Not implemented');
 }
 
 
@@ -565,6 +578,7 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
+    
     throw new Error('Not implemented');
 }
 
