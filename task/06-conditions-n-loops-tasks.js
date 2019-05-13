@@ -520,7 +520,31 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-    throw new Error('Not implemented');
+    let path = "";
+    let minimum = Infinity;
+    let first = new Array(pathes.length)
+    for(let i = 0; i<pathes.length; i++){
+        first[i] = pathes[i].split('/');
+        if(minimum<first[i].length){
+            minimum = first[i].length;
+        }
+    }
+    for(let i=0;i<minimum;i++){
+        let temp = first[0][i];
+        let j = 1;
+        for(j = 1;j<first.length;j++){
+            if(first[j][i] != temp){
+                break;
+            }
+        }
+        if (j != first.length)
+        {
+            break;
+        }
+        path += temp + "/"; 
+    }
+    return path;
+    //throw new Error('Not implemented');
 }
 
 
@@ -543,7 +567,20 @@ function getCommonDirectoryPath(pathes) {
  *
  */
 function getMatrixProduct(m1, m2) {
-    throw new Error('Not implemented');
+    let m1Rows = m1.length, m1Cols = m1[0].length,
+    m2Cols = m2[0].length,
+    arr = new Array(m1Rows);
+    for (var i = 0; i < m1Rows; ++i) {
+        arr[i] = new Array(m2Cols);
+        for (var j = 0; j < m2Cols; ++j) {
+            arr[i][j] = 0;
+            for (let k = 0; k < m1Cols; ++k) {
+                arr[i][j] += m1[i][k] * m2[k][j];
+            }
+        }
+    }
+    return arr;
+    //throw new Error('Not implemented');
 }
 
 
@@ -578,8 +615,18 @@ function getMatrixProduct(m1, m2) {
  *
  */
 function evaluateTicTacToePosition(position) {
-    
-    throw new Error('Not implemented');
+    if (position[0][0] && (position[0][0] == position[1][1]) && (position[0][0] == position[2][2]))
+    return position[0][0];
+    if (position[0][2] && (position[0][2] == position[1][1]) && (position[0][2] == position[2][0]))
+        return position[0][2];
+    for (let i = 0; i < position.length; i++) {
+        if (position[i][0] && (position[i][0] == position[i][1]) && (position[i][0] == position[i][2])) 
+            return position[i][0];
+        if (position[0][i] && (position[0][i] == position[1][i]) && (position[0][i] == position[2][i])) 
+            return position[0][i];
+    }
+    return undefined;
+    //throw new Error('Not implemented');
 }
 
 
